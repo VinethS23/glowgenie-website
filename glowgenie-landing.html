@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowGenie - Natural Skincare Solutions</title>
+  <meta name="description" content="Discover GlowGenie's natural skincare products for radiant, healthy skin.">
+
+  <!-- Global Styles -->
+  <style>
+    :root {
+      /* Color Palette */
+      --color-primary: #2D5A27;
+      --color-secondary: #F5E6D3;
+      --color-accent: #8B4513;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-white: #FFFFFF;
+      --color-black: #000000;
+
+      /* Typography */
+      --font-heading: 'Georgia', serif;
+      --font-body: 'Arial', sans-serif;
+
+      /* Spacing Scale */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+
+      /* Menu Height */
+      --menu-height: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    section[id] {
+      scroll-margin-top: var(--menu-height);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================
+     SECTION: Menu
+     ============================================ -->
+<header id="menu" class="menu-header">
+  <style>
+    .menu-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--menu-height);
+      background: var(--color-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-sm);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .menu-logo {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .menu-nav {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .menu-link {
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: var(--space-xs) var(--space-sm);
+      transition: color 0.3s ease;
+    }
+
+    .menu-link:hover {
+      color: var(--color-primary);
+    }
+
+    .menu-link-cta {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: 25px;
+      padding: var(--space-xs) var(--space-md);
+    }
+
+    .menu-link-cta:hover {
+      background: #234a1f;
+      color: var(--color-white);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-xs);
+    }
+
+    .menu-toggle-bar {
+      width: 25px;
+      height: 3px;
+      background: var(--color-text);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-nav {
+        display: none;
+        position: absolute;
+        top: var(--menu-height);
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        flex-direction: column;
+        padding: var(--space-sm);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-nav.menu-nav-open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-link {
+        padding: var(--space-sm);
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <div class="menu-container">
+    <a href="#hero" class="menu-logo">GlowGenie</a>
+
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('.menu-nav').classList.toggle('menu-nav-open')">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
+
+    <nav class="menu-nav">
+      <a href="#benefits" class="menu-link">Benefits</a>
+      <a href="#video" class="menu-link">Video</a>
+      <a href="#features" class="menu-link">Features</a>
+      <a href="#story" class="menu-link">Our Story</a>
+      <a href="#testimonials" class="menu-link">Testimonials</a>
+      <a href="#cta" class="menu-link menu-link-cta">Shop Now</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ============================================
+     SECTION: Hero
+     ============================================ -->
+<section id="hero" class="hero-section">
+  <style>
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-white) 100%);
+      padding-top: var(--menu-height);
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--space-sm);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      color: var(--color-text);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-title-accent {
+      color: var(--color-primary);
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-md);
+      line-height: 1.8;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: var(--space-sm) var(--space-md);
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-cta-primary {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .hero-cta-primary:hover {
+      background: #234a1f;
+      transform: translateY(-2px);
+    }
+
+    .hero-cta-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+
+    .hero-cta-secondary:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .hero-image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 1;
+      background: linear-gradient(145deg, var(--color-primary), #4a8a42);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 1.5rem;
+      text-align: center;
+      padding: var(--space-md);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2.75rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: var(--space-md) var(--space-sm);
+      }
+
+      .hero-content {
+        order: 2;
+        max-width: 100%;
+      }
+
+      .hero-image-wrapper {
+        order: 1;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .hero-cta-group {
+        justify-content: center;
+      }
+
+      .hero-image-placeholder {
+        max-width: 300px;
+      }
+    }
+  </style>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <p class="hero-tagline">Natural Beauty Awaits</p>
+      <h1 class="hero-title">
+        Unlock Your Skin's <span class="hero-title-accent">Natural Glow</span>
+      </h1>
+      <p class="hero-description">
+        Discover the power of nature with GlowGenie's carefully crafted skincare solutions.
+        Our products harness organic ingredients to reveal your most radiant, healthy skin.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#cta" class="hero-cta hero-cta-primary">Shop Now</a>
+        <a href="#benefits" class="hero-cta hero-cta-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-image-wrapper">
+      <div class="hero-image-placeholder">
+        [Product Image Placeholder]
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: Benefits
+     ============================================ -->
+<section id="benefits" class="benefits-section">
+  <style>
+    .benefits-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-white);
+    }
+
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefits-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .benefits-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .benefits-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .benefits-card {
+      background: var(--color-secondary);
+      padding: var(--space-md);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .benefits-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefits-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-sm);
+      font-size: 2rem;
+    }
+
+    .benefits-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .benefits-card-description {
+      font-size: 0.95rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .benefits-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .benefits-title {
+        font-size: 2rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="benefits-container">
+    <div class="benefits-header">
+      <p class="benefits-subtitle">Why Choose Us</p>
+      <h2 class="benefits-title">The GlowGenie Difference</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefits-card">
+        <div class="benefits-icon">🌿</div>
+        <h3 class="benefits-card-title">100% Natural</h3>
+        <p class="benefits-card-description">
+          Pure, organic ingredients sourced from nature. No harsh chemicals, parabens, or synthetic fragrances.
+        </p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-icon">✨</div>
+        <h3 class="benefits-card-title">Visible Results</h3>
+        <p class="benefits-card-description">
+          See noticeable improvements in your skin's texture, tone, and radiance within just 2 weeks.
+        </p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-icon">🐰</div>
+        <h3 class="benefits-card-title">Cruelty-Free</h3>
+        <p class="benefits-card-description">
+          Never tested on animals. Our products are ethically made with love and compassion.
+        </p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-icon">🌍</div>
+        <h3 class="benefits-card-title">Eco-Friendly</h3>
+        <p class="benefits-card-description">
+          Sustainable packaging and environmentally responsible practices from production to delivery.
+        </p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-icon">💧</div>
+        <h3 class="benefits-card-title">Deep Hydration</h3>
+        <p class="benefits-card-description">
+          Advanced formulas that penetrate deep to provide lasting moisture and nourishment.
+        </p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-icon">🔬</div>
+        <h3 class="benefits-card-title">Science-Backed</h3>
+        <p class="benefits-card-description">
+          Formulated by dermatologists using proven ingredients and cutting-edge skincare research.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: Video
+     ============================================ -->
+<section id="video" class="video-section">
+  <style>
+    .video-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-secondary);
+    }
+
+    .video-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .video-header {
+      text-align: center;
+      margin-bottom: var(--space-md);
+    }
+
+    .video-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .video-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      background: var(--color-text);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      background: linear-gradient(145deg, #1a1a1a, #333);
+    }
+
+    .video-play-button {
+      width: 80px;
+      height: 80px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-sm);
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .video-play-button:hover {
+      transform: scale(1.1);
+      background: #234a1f;
+    }
+
+    .video-play-icon {
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 25px solid var(--color-white);
+      margin-left: 5px;
+    }
+
+    .video-placeholder-text {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    .video-caption {
+      text-align: center;
+      margin-top: var(--space-sm);
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .video-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .video-title {
+        font-size: 2rem;
+      }
+
+      .video-play-button {
+        width: 60px;
+        height: 60px;
+      }
+
+      .video-play-icon {
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-left: 20px solid var(--color-white);
+      }
+    }
+  </style>
+
+  <div class="video-container">
+    <div class="video-header">
+      <p class="video-subtitle">See It In Action</p>
+      <h2 class="video-title">Watch Our Story</h2>
+    </div>
+
+    <div class="video-wrapper">
+      <div class="video-placeholder">
+        <div class="video-play-button">
+          <div class="video-play-icon"></div>
+        </div>
+        <p class="video-placeholder-text">[Video Embed Placeholder]</p>
+      </div>
+      <!-- Replace placeholder with actual video embed:
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="GlowGenie Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+      </iframe>
+      -->
+    </div>
+
+    <p class="video-caption">Discover how GlowGenie transforms your skincare routine</p>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: Features
+     ============================================ -->
+<section id="features" class="features-section">
+  <style>
+    .features-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-white);
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .features-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .features-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .features-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .features-item:nth-child(even) {
+      direction: rtl;
+    }
+
+    .features-item:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .features-item-content {
+      padding: var(--space-md);
+    }
+
+    .features-item-number {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      color: var(--color-secondary);
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .features-item-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+    }
+
+    .features-item-description {
+      color: var(--color-text-light);
+      line-height: 1.8;
+      margin-bottom: var(--space-sm);
+    }
+
+    .features-item-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .features-item-image {
+      background: var(--color-secondary);
+      border-radius: 15px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .features-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .features-title {
+        font-size: 2rem;
+      }
+
+      .features-item,
+      .features-item:nth-child(even) {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+
+      .features-item-content {
+        padding: var(--space-sm) 0;
+        order: 2;
+      }
+
+      .features-item-image {
+        order: 1;
+      }
+
+      .features-item-number {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+
+  <div class="features-container">
+    <div class="features-header">
+      <p class="features-subtitle">Product Features</p>
+      <h2 class="features-title">What Makes Us Special</h2>
+    </div>
+
+    <div class="features-list">
+      <div class="features-item">
+        <div class="features-item-content">
+          <div class="features-item-number">01</div>
+          <h3 class="features-item-title">Advanced Botanical Extracts</h3>
+          <p class="features-item-description">
+            Our proprietary blend combines rare botanical extracts from around the world.
+            Each ingredient is carefully selected for its proven skincare benefits and
+            sourced from sustainable farms.
+          </p>
+          <span class="features-item-highlight">
+            ✓ 15+ Active Botanicals
+          </span>
+        </div>
+        <div class="features-item-image">
+          [Feature Image Placeholder]
+        </div>
+      </div>
+
+      <div class="features-item">
+        <div class="features-item-content">
+          <div class="features-item-number">02</div>
+          <h3 class="features-item-title">Time-Release Technology</h3>
+          <p class="features-item-description">
+            Our innovative delivery system ensures active ingredients are released
+            gradually throughout the day, providing continuous nourishment and
+            protection for your skin.
+          </p>
+          <span class="features-item-highlight">
+            ✓ 24-Hour Protection
+          </span>
+        </div>
+        <div class="features-item-image">
+          [Feature Image Placeholder]
+        </div>
+      </div>
+
+      <div class="features-item">
+        <div class="features-item-content">
+          <div class="features-item-number">03</div>
+          <h3 class="features-item-title">pH-Balanced Formula</h3>
+          <p class="features-item-description">
+            Perfectly balanced to match your skin's natural pH level, our formula
+            works in harmony with your skin barrier, maximizing absorption and
+            minimizing irritation.
+          </p>
+          <span class="features-item-highlight">
+            ✓ Dermatologist Tested
+          </span>
+        </div>
+        <div class="features-item-image">
+          [Feature Image Placeholder]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: Story
+     ============================================ -->
+<section id="story" class="story-section">
+  <style>
+    .story-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .story-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .story-image-wrapper {
+      position: relative;
+    }
+
+    .story-image-placeholder {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .story-image-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 150px;
+      height: 150px;
+      background: var(--color-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-sm);
+    }
+
+    .story-image-accent-text {
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .story-image-accent-number {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .story-content {
+      padding: var(--space-md);
+    }
+
+    .story-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+      opacity: 0.8;
+    }
+
+    .story-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      margin-bottom: var(--space-md);
+      line-height: 1.3;
+    }
+
+    .story-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .story-signature {
+      margin-top: var(--space-md);
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.25rem;
+    }
+
+    .story-role {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      font-style: normal;
+      margin-top: var(--space-xs);
+    }
+
+    @media (max-width: 768px) {
+      .story-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .story-container {
+        grid-template-columns: 1fr;
+      }
+
+      .story-title {
+        font-size: 2rem;
+      }
+
+      .story-content {
+        padding: var(--space-sm) 0;
+      }
+
+      .story-image-accent {
+        width: 120px;
+        height: 120px;
+        bottom: -10px;
+        right: -10px;
+      }
+
+      .story-image-accent-number {
+        font-size: 1.5rem;
+      }
+
+      .story-image-accent-text {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
+  <div class="story-container">
+    <div class="story-image-wrapper">
+      <div class="story-image-placeholder">
+        [Founder/Brand Story Image Placeholder]
+      </div>
+      <div class="story-image-accent">
+        <div class="story-image-accent-text">
+          <span class="story-image-accent-number">10+</span>
+          Years of Excellence
+        </div>
+      </div>
+    </div>
+
+    <div class="story-content">
+      <p class="story-subtitle">Our Story</p>
+      <h2 class="story-title">Born from a Passion for Natural Beauty</h2>
+      <p class="story-text">
+        GlowGenie began in a small kitchen with a simple mission: create skincare
+        that actually works using only what nature provides. Frustrated by products
+        filled with harsh chemicals and empty promises, our founder set out to
+        prove that effective skincare could be both natural and gentle.
+      </p>
+      <p class="story-text">
+        Today, we've helped over 100,000 customers discover their natural glow.
+        Every product we create is a testament to our belief that the best
+        ingredients come from the earth, not a laboratory.
+      </p>
+      <div class="story-signature">
+        Sarah Mitchell
+        <div class="story-role">Founder & CEO, GlowGenie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: Testimonials
+     ============================================ -->
+<section id="testimonials" class="testimonials-section">
+  <style>
+    .testimonials-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-white);
+    }
+
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .testimonials-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .testimonials-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .testimonials-card {
+      background: var(--color-secondary);
+      padding: var(--space-md);
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .testimonials-quote-icon {
+      font-size: 3rem;
+      color: var(--color-primary);
+      opacity: 0.3;
+      position: absolute;
+      top: var(--space-sm);
+      left: var(--space-md);
+      line-height: 1;
+    }
+
+    .testimonials-stars {
+      color: #FFD700;
+      font-size: 1.1rem;
+      margin-bottom: var(--space-sm);
+      letter-spacing: 2px;
+    }
+
+    .testimonials-text {
+      font-size: 1rem;
+      color: var(--color-text);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+      font-style: italic;
+    }
+
+    .testimonials-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .testimonials-avatar {
+      width: 50px;
+      height: 50px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .testimonials-author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonials-author-name {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .testimonials-author-detail {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+    }
+
+    @media (max-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .testimonials-title {
+        font-size: 2rem;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="testimonials-container">
+    <div class="testimonials-header">
+      <p class="testimonials-subtitle">Testimonials</p>
+      <h2 class="testimonials-title">What Our Customers Say</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonials-card">
+        <span class="testimonials-quote-icon">"</span>
+        <div class="testimonials-stars">★★★★★</div>
+        <p class="testimonials-text">
+          "I've tried countless skincare products, but GlowGenie is the first that
+          actually delivered on its promises. My skin has never looked better!"
+        </p>
+        <div class="testimonials-author">
+          <div class="testimonials-avatar">JD</div>
+          <div class="testimonials-author-info">
+            <span class="testimonials-author-name">Jessica Davis</span>
+            <span class="testimonials-author-detail">Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-card">
+        <span class="testimonials-quote-icon">"</span>
+        <div class="testimonials-stars">★★★★★</div>
+        <p class="testimonials-text">
+          "As someone with sensitive skin, finding the right products is hard.
+          GlowGenie is gentle yet effective. I'm a customer for life!"
+        </p>
+        <div class="testimonials-author">
+          <div class="testimonials-avatar">MR</div>
+          <div class="testimonials-author-info">
+            <span class="testimonials-author-name">Michael Roberts</span>
+            <span class="testimonials-author-detail">Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-card">
+        <span class="testimonials-quote-icon">"</span>
+        <div class="testimonials-stars">★★★★★</div>
+        <p class="testimonials-text">
+          "The natural ingredients make such a difference. My skin feels
+          nourished and healthy, not like it's covered in chemicals."
+        </p>
+        <div class="testimonials-author">
+          <div class="testimonials-avatar">EW</div>
+          <div class="testimonials-author-info">
+            <span class="testimonials-author-name">Emily Watson</span>
+            <span class="testimonials-author-detail">Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: CTA
+     ============================================ -->
+<section id="cta" class="cta-section">
+  <style>
+    .cta-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: linear-gradient(135deg, var(--color-secondary) 0%, #EAD9C4 100%);
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-title {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+
+    .cta-description {
+      font-size: 1.1rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-md);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-price {
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-price-original {
+      font-size: 1.25rem;
+      color: var(--color-text-light);
+      text-decoration: line-through;
+      margin-right: var(--space-xs);
+    }
+
+    .cta-price-current {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-sm) var(--space-lg);
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-button:hover {
+      background: #234a1f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(45, 90, 39, 0.3);
+    }
+
+    .cta-guarantees {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .cta-guarantee {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    .cta-guarantee-icon {
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      .cta-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .cta-title {
+        font-size: 2rem;
+      }
+
+      .cta-price-current {
+        font-size: 2rem;
+      }
+
+      .cta-guarantees {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+    }
+  </style>
+
+  <div class="cta-container">
+    <span class="cta-badge">Limited Time Offer</span>
+    <h2 class="cta-title">Ready to Transform Your Skin?</h2>
+    <p class="cta-description">
+      Join thousands of happy customers and experience the GlowGenie difference.
+      Your journey to radiant, healthy skin starts today.
+    </p>
+
+    <div class="cta-price">
+      <span class="cta-price-original">$79.99</span>
+      <span class="cta-price-current">$49.99</span>
+    </div>
+
+    <a href="#" class="cta-button">Shop Now - Save 37%</a>
+
+    <div class="cta-guarantees">
+      <div class="cta-guarantee">
+        <span class="cta-guarantee-icon">✓</span>
+        Free Shipping
+      </div>
+      <div class="cta-guarantee">
+        <span class="cta-guarantee-icon">✓</span>
+        30-Day Money Back
+      </div>
+      <div class="cta-guarantee">
+        <span class="cta-guarantee-icon">✓</span>
+        Secure Checkout
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: Footer
+     ============================================ -->
+<footer id="footer" class="footer-section">
+  <style>
+    .footer-section {
+      padding: var(--space-lg) var(--space-sm) var(--space-md);
+      background: var(--color-text);
+      color: var(--color-white);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-lg);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand {
+      max-width: 300px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-tagline {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      line-height: 1.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .footer-social-link:hover {
+      background: var(--color-primary);
+    }
+
+    .footer-column-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--color-white);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-xs);
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-md);
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .footer-copyright {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .footer-legal a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-legal a:hover {
+      color: var(--color-white);
+    }
+
+    @media (max-width: 1024px) {
+      .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-brand {
+        grid-column: span 2;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-section {
+        padding: var(--space-md) var(--space-sm);
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-brand {
+        grid-column: span 1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-legal {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">GlowGenie</div>
+        <p class="footer-tagline">
+          Natural skincare solutions for radiant, healthy skin.
+          Harnessing the power of nature since 2014.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="Facebook">f</a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">in</a>
+          <a href="#" class="footer-social-link" aria-label="Twitter">X</a>
+          <a href="#" class="footer-social-link" aria-label="Pinterest">P</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-column-title">Shop</h4>
+        <ul class="footer-links">
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Gift Sets</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-column-title">Support</h4>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-column-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; 2024 GlowGenie. All rights reserved.
+      </p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================
+     OPTIONAL: Scroll-Spy JavaScript
+     ============================================ -->
+<script>
+  // Scroll-spy for active navigation highlighting
+  (function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.menu-link');
+
+    function highlightNav() {
+      const scrollPos = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.style.color = '';
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.style.color = 'var(--color-primary)';
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNav);
+    highlightNav(); // Initial call
+  })();
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.menu-nav').classList.remove('menu-nav-open');
+    });
+  });
+</script>
+
+</body>
+</html>
