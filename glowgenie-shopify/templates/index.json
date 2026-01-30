@@ -1,0 +1,296 @@
+{
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_text": "GlowGenie"
+      },
+      "blocks": {
+        "nav_1": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Benefits",
+            "link": "#benefits",
+            "is_cta": false
+          }
+        },
+        "nav_2": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Video",
+            "link": "#video",
+            "is_cta": false
+          }
+        },
+        "nav_3": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Features",
+            "link": "#features",
+            "is_cta": false
+          }
+        },
+        "nav_4": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Our Story",
+            "link": "#story",
+            "is_cta": false
+          }
+        },
+        "nav_5": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Testimonials",
+            "link": "#testimonials",
+            "is_cta": false
+          }
+        },
+        "nav_6": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop Now",
+            "link": "#cta",
+            "is_cta": true
+          }
+        }
+      },
+      "block_order": ["nav_1", "nav_2", "nav_3", "nav_4", "nav_5", "nav_6"]
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "tagline": "Natural Beauty Awaits",
+        "title_line1": "Unlock Your Skin's",
+        "title_accent": "Natural Glow",
+        "description": "Discover the power of nature with GlowGenie's carefully crafted skincare solutions. Our products harness organic ingredients to reveal your most radiant, healthy skin.",
+        "cta_primary_text": "Shop Now",
+        "cta_primary_link": "#cta",
+        "cta_secondary_text": "Learn More",
+        "cta_secondary_link": "#benefits"
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "settings": {
+        "subtitle": "Why Choose Us",
+        "title": "The GlowGenie Difference"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🌿",
+            "title": "100% Natural",
+            "description": "Pure, organic ingredients sourced from nature. No harsh chemicals, parabens, or synthetic fragrances."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✨",
+            "title": "Visible Results",
+            "description": "See noticeable improvements in your skin's texture, tone, and radiance within just 2 weeks."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🐰",
+            "title": "Cruelty-Free",
+            "description": "Never tested on animals. Our products are ethically made with love and compassion."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🌍",
+            "title": "Eco-Friendly",
+            "description": "Sustainable packaging and environmentally responsible practices from production to delivery."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💧",
+            "title": "Deep Hydration",
+            "description": "Advanced formulas that penetrate deep to provide lasting moisture and nourishment."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🔬",
+            "title": "Science-Backed",
+            "description": "Formulated by dermatologists using proven ingredients and cutting-edge skincare research."
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5", "benefit_6"]
+    },
+    "video": {
+      "type": "video",
+      "settings": {
+        "subtitle": "See It In Action",
+        "title": "Watch Our Story",
+        "caption": "Discover how GlowGenie transforms your skincare routine"
+      }
+    },
+    "features": {
+      "type": "features",
+      "settings": {
+        "subtitle": "Product Features",
+        "title": "What Makes Us Special"
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Advanced Botanical Extracts",
+            "description": "Our proprietary blend combines rare botanical extracts from around the world. Each ingredient is carefully selected for its proven skincare benefits and sourced from sustainable farms.",
+            "highlight": "✓ 15+ Active Botanicals"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Time-Release Technology",
+            "description": "Our innovative delivery system ensures active ingredients are released gradually throughout the day, providing continuous nourishment and protection for your skin.",
+            "highlight": "✓ 24-Hour Protection"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "pH-Balanced Formula",
+            "description": "Perfectly balanced to match your skin's natural pH level, our formula works in harmony with your skin barrier, maximizing absorption and minimizing irritation.",
+            "highlight": "✓ Dermatologist Tested"
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3"]
+    },
+    "story": {
+      "type": "story",
+      "settings": {
+        "subtitle": "Our Story",
+        "title": "Born from a Passion for Natural Beauty",
+        "founder_name": "Sarah Mitchell",
+        "founder_role": "Founder & CEO, GlowGenie",
+        "years_number": "10+",
+        "years_text": "Years of Excellence"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "subtitle": "Testimonials",
+        "title": "What Our Customers Say"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I've tried countless skincare products, but GlowGenie is the first that actually delivered on its promises. My skin has never looked better!",
+            "author_name": "Jessica Davis",
+            "author_detail": "Verified Buyer"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "As someone with sensitive skin, finding the right products is hard. GlowGenie is gentle yet effective. I'm a customer for life!",
+            "author_name": "Michael Roberts",
+            "author_detail": "Verified Buyer"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The natural ingredients make such a difference. My skin feels nourished and healthy, not like it's covered in chemicals.",
+            "author_name": "Emily Watson",
+            "author_detail": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "badge_text": "Limited Time Offer",
+        "title": "Ready to Transform Your Skin?",
+        "description": "Join thousands of happy customers and experience the GlowGenie difference. Your journey to radiant, healthy skin starts today.",
+        "original_price": "$79.99",
+        "current_price": "$49.99",
+        "button_text": "Shop Now - Save 37%"
+      },
+      "blocks": {
+        "guarantee_1": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "✓",
+            "text": "Free Shipping"
+          }
+        },
+        "guarantee_2": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "✓",
+            "text": "30-Day Money Back"
+          }
+        },
+        "guarantee_3": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "✓",
+            "text": "Secure Checkout"
+          }
+        }
+      },
+      "block_order": ["guarantee_1", "guarantee_2", "guarantee_3"]
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "logo_text": "GlowGenie",
+        "tagline": "Natural skincare solutions for radiant, healthy skin. Harnessing the power of nature since 2014."
+      },
+      "blocks": {
+        "menu_1": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Shop"
+          }
+        },
+        "menu_2": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Support"
+          }
+        },
+        "menu_3": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Company"
+          }
+        }
+      },
+      "block_order": ["menu_1", "menu_2", "menu_3"]
+    }
+  },
+  "order": [
+    "header",
+    "hero",
+    "benefits",
+    "video",
+    "features",
+    "story",
+    "testimonials",
+    "cta",
+    "footer"
+  ]
+}

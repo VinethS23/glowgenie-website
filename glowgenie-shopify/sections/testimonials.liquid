@@ -1,0 +1,167 @@
+<section id="testimonials" class="testimonials-section">
+  <style>
+    .testimonials-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-white);
+    }
+
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .testimonials-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .testimonials-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .testimonials-title {
+        font-size: 2rem;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="testimonials-container">
+    <div class="testimonials-header">
+      <p class="testimonials-subtitle">{{ section.settings.subtitle | default: 'Testimonials' }}</p>
+      <h2 class="testimonials-title">{{ section.settings.title | default: 'What Our Customers Say' }}</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial' %}
+          {% render 'testimonial-card', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What Our Customers Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "This product changed my skincare routine completely!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Jane Doe"
+        },
+        {
+          "type": "text",
+          "id": "author_detail",
+          "label": "Author Detail",
+          "default": "Verified Buyer"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Author Avatar",
+          "info": "Optional. If not provided, initials will be used."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I've tried countless skincare products, but GlowGenie is the first that actually delivered on its promises. My skin has never looked better!",
+            "author_name": "Jessica Davis",
+            "author_detail": "Verified Buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "As someone with sensitive skin, finding the right products is hard. GlowGenie is gentle yet effective. I'm a customer for life!",
+            "author_name": "Michael Roberts",
+            "author_detail": "Verified Buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The natural ingredients make such a difference. My skin feels nourished and healthy, not like it's covered in chemicals.",
+            "author_name": "Emily Watson",
+            "author_detail": "Verified Buyer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

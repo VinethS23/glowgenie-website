@@ -1,0 +1,70 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "GlowGenie",
+    "theme_version": "1.0.0",
+    "theme_author": "GlowGenie",
+    "theme_documentation_url": "https://github.com/Shopify/cli",
+    "theme_support_url": "https://github.com/Shopify/cli?tab=readme-ov-file#help-"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#2D5A27",
+        "info": "Main brand color (green)"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color",
+        "default": "#F5E6D3",
+        "info": "Background accent color (cream)"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color",
+        "default": "#8B4513",
+        "info": "Accent color (brown)"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#333333",
+        "info": "Main text color"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Fonts"
+      },
+      {
+        "type": "text",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "'Georgia', serif",
+        "info": "Font family for headings"
+      },
+      {
+        "type": "text",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "'Arial', sans-serif",
+        "info": "Font family for body text"
+      }
+    ]
+  }
+]

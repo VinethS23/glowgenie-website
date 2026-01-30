@@ -1,0 +1,110 @@
+{% comment %}
+  Testimonial Card Snippet
+
+  Required variables:
+  - block: The block object containing settings for rating, quote, author_name, author_detail, and avatar
+{% endcomment %}
+
+<style>
+  .testimonials-card {
+    background: var(--color-secondary);
+    padding: var(--space-md);
+    border-radius: 15px;
+    position: relative;
+  }
+
+  .testimonials-quote-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    opacity: 0.3;
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-md);
+    line-height: 1;
+  }
+
+  .testimonials-stars {
+    color: #FFD700;
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    letter-spacing: 2px;
+  }
+
+  .testimonials-text {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    font-style: italic;
+  }
+
+  .testimonials-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .testimonials-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 1.1rem;
+    overflow: hidden;
+  }
+
+  .testimonials-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonials-author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonials-author-name {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .testimonials-author-detail {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+</style>
+
+<div class="testimonials-card" {{ block.shopify_attributes }}>
+  <span class="testimonials-quote-icon">"</span>
+  <div class="testimonials-stars">
+    {% assign rating = block.settings.rating | default: 5 %}
+    {% for i in (1..rating) %}★{% endfor %}{% for i in (rating..4) %}{% if i > rating %}☆{% endif %}{% endfor %}
+  </div>
+  <p class="testimonials-text">
+    "{{ block.settings.quote | default: 'This product changed my skincare routine completely!' }}"
+  </p>
+  <div class="testimonials-author">
+    <div class="testimonials-avatar">
+      {% if block.settings.avatar %}
+        <img src="{{ block.settings.avatar | img_url: '100x100' }}" alt="{{ block.settings.author_name }}">
+      {% else %}
+        {% assign name_parts = block.settings.author_name | default: 'JD' | split: ' ' %}
+        {% assign initials = '' %}
+        {% for part in name_parts %}
+          {% assign initials = initials | append: part | slice: 0 %}
+        {% endfor %}
+        {{ initials | upcase }}
+      {% endif %}
+    </div>
+    <div class="testimonials-author-info">
+      <span class="testimonials-author-name">{{ block.settings.author_name | default: 'Jane Doe' }}</span>
+      <span class="testimonials-author-detail">{{ block.settings.author_detail | default: 'Verified Buyer' }}</span>
+    </div>
+  </div>
+</div>

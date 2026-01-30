@@ -1,0 +1,217 @@
+<header id="menu" class="menu-header">
+  <style>
+    .menu-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--menu-height);
+      background: var(--color-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-sm);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .menu-logo {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .menu-nav {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .menu-link {
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: var(--space-xs) var(--space-sm);
+      transition: color 0.3s ease;
+    }
+
+    .menu-link:hover {
+      color: var(--color-primary);
+    }
+
+    .menu-link-cta {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: 25px;
+      padding: var(--space-xs) var(--space-md);
+    }
+
+    .menu-link-cta:hover {
+      background: #234a1f;
+      color: var(--color-white);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-xs);
+    }
+
+    .menu-toggle-bar {
+      width: 25px;
+      height: 3px;
+      background: var(--color-text);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-nav {
+        display: none;
+        position: absolute;
+        top: var(--menu-height);
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        flex-direction: column;
+        padding: var(--space-sm);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-nav.menu-nav-open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-link {
+        padding: var(--space-sm);
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <div class="menu-container">
+    <a href="#hero" class="menu-logo">{{ section.settings.logo_text | default: shop.name }}</a>
+
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('.menu-nav').classList.toggle('menu-nav-open')">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
+
+    <nav class="menu-nav">
+      {% for block in section.blocks %}
+        {% if block.type == 'nav_link' %}
+          <a href="{{ block.settings.link }}" class="menu-link {% if block.settings.is_cta %}menu-link-cta{% endif %}">
+            {{ block.settings.label }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "GlowGenie"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link Label",
+          "default": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link URL",
+          "info": "Use # for anchor links (e.g., #benefits) or full URLs"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_cta",
+          "label": "Style as CTA Button",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Benefits",
+            "link": "#benefits"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Video",
+            "link": "#video"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Features",
+            "link": "#features"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Our Story",
+            "link": "#story"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Testimonials",
+            "link": "#testimonials"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop Now",
+            "link": "#cta",
+            "is_cta": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

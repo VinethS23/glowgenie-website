@@ -1,0 +1,267 @@
+<section id="story" class="story-section">
+  <style>
+    .story-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .story-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .story-image-wrapper {
+      position: relative;
+    }
+
+    .story-image-placeholder {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .story-image {
+      width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+
+    .story-image-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 150px;
+      height: 150px;
+      background: var(--color-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-sm);
+    }
+
+    .story-image-accent-text {
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .story-image-accent-number {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .story-content {
+      padding: var(--space-md);
+    }
+
+    .story-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+      opacity: 0.8;
+    }
+
+    .story-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      margin-bottom: var(--space-md);
+      line-height: 1.3;
+    }
+
+    .story-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .story-signature {
+      margin-top: var(--space-md);
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.25rem;
+    }
+
+    .story-role {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      font-style: normal;
+      margin-top: var(--space-xs);
+    }
+
+    @media (max-width: 768px) {
+      .story-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .story-container {
+        grid-template-columns: 1fr;
+      }
+
+      .story-title {
+        font-size: 2rem;
+      }
+
+      .story-content {
+        padding: var(--space-sm) 0;
+      }
+
+      .story-image-accent {
+        width: 120px;
+        height: 120px;
+        bottom: -10px;
+        right: -10px;
+      }
+
+      .story-image-accent-number {
+        font-size: 1.5rem;
+      }
+
+      .story-image-accent-text {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
+  <div class="story-container">
+    <div class="story-image-wrapper">
+      {% if section.settings.story_image %}
+        <img src="{{ section.settings.story_image | img_url: 'master' }}" alt="{{ section.settings.image_alt | default: 'Our Story' }}" class="story-image">
+      {% else %}
+        <div class="story-image-placeholder">
+          [Founder/Brand Story Image Placeholder]
+        </div>
+      {% endif %}
+      <div class="story-image-accent">
+        <div class="story-image-accent-text">
+          <span class="story-image-accent-number">{{ section.settings.years_number | default: '10+' }}</span>
+          {{ section.settings.years_text | default: 'Years of Excellence' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="story-content">
+      <p class="story-subtitle">{{ section.settings.subtitle | default: 'Our Story' }}</p>
+      <h2 class="story-title">{{ section.settings.title | default: 'Born from a Passion for Natural Beauty' }}</h2>
+
+      {% if section.settings.story_text != blank %}
+        <div class="story-text">{{ section.settings.story_text }}</div>
+      {% else %}
+        <p class="story-text">
+          GlowGenie began in a small kitchen with a simple mission: create skincare
+          that actually works using only what nature provides. Frustrated by products
+          filled with harsh chemicals and empty promises, our founder set out to
+          prove that effective skincare could be both natural and gentle.
+        </p>
+        <p class="story-text">
+          Today, we've helped over 100,000 customers discover their natural glow.
+          Every product we create is a testament to our belief that the best
+          ingredients come from the earth, not a laboratory.
+        </p>
+      {% endif %}
+
+      <div class="story-signature">
+        {{ section.settings.founder_name | default: 'Sarah Mitchell' }}
+        <div class="story-role">{{ section.settings.founder_role | default: 'Founder & CEO, GlowGenie' }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Born from a Passion for Natural Beauty"
+    },
+    {
+      "type": "richtext",
+      "id": "story_text",
+      "label": "Story Text",
+      "info": "Leave blank to use default placeholder text"
+    },
+    {
+      "type": "header",
+      "content": "Founder"
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder Name",
+      "default": "Sarah Mitchell"
+    },
+    {
+      "type": "text",
+      "id": "founder_role",
+      "label": "Founder Role",
+      "default": "Founder & CEO, GlowGenie"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "default": "Our Story"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "years_number",
+      "label": "Badge Number",
+      "default": "10+"
+    },
+    {
+      "type": "text",
+      "id": "years_text",
+      "label": "Badge Text",
+      "default": "Years of Excellence"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story"
+    }
+  ]
+}
+{% endschema %}

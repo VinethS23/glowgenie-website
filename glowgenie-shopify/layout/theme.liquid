@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }} - {{ shop.name }}</title>
+  <meta name="description" content="{{ page_description | default: shop.description }}">
+
+  {{ content_for_header }}
+
+  <!-- Global Styles -->
+  <style>
+    :root {
+      /* Color Palette - Uses theme settings */
+      --color-primary: {{ settings.color_primary | default: '#2D5A27' }};
+      --color-secondary: {{ settings.color_secondary | default: '#F5E6D3' }};
+      --color-accent: {{ settings.color_accent | default: '#8B4513' }};
+      --color-text: {{ settings.color_text | default: '#333333' }};
+      --color-text-light: #666666;
+      --color-white: #FFFFFF;
+      --color-black: #000000;
+
+      /* Typography */
+      --font-heading: {{ settings.font_heading | default: "'Georgia', serif" }};
+      --font-body: {{ settings.font_body | default: "'Arial', sans-serif" }};
+
+      /* Spacing Scale */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+
+      /* Menu Height */
+      --menu-height: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    section[id] {
+      scroll-margin-top: var(--menu-height);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Placeholder styles for images */
+    .placeholder {
+      background: var(--color-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      padding: var(--space-md);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+{{ content_for_layout }}
+
+<!-- Scroll-Spy JavaScript -->
+<script>
+  // Scroll-spy for active navigation highlighting
+  (function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.menu-link');
+
+    function highlightNav() {
+      const scrollPos = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.style.color = '';
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.style.color = 'var(--color-primary)';
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNav);
+    highlightNav(); // Initial call
+  })();
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.menu-nav').classList.remove('menu-nav-open');
+    });
+  });
+</script>
+
+</body>
+</html>

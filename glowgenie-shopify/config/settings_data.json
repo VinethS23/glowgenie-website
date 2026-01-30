@@ -1,0 +1,10 @@
+{
+  "current": {
+    "color_primary": "#2D5A27",
+    "color_secondary": "#F5E6D3",
+    "color_accent": "#8B4513",
+    "color_text": "#333333",
+    "font_heading": "'Georgia', serif",
+    "font_body": "'Arial', sans-serif"
+  }
+}

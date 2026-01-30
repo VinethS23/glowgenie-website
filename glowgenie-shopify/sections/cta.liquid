@@ -1,0 +1,285 @@
+<section id="cta" class="cta-section">
+  <style>
+    .cta-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: linear-gradient(135deg, var(--color-secondary) 0%, #EAD9C4 100%);
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-title {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+
+    .cta-description {
+      font-size: 1.1rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-md);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-price {
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-price-original {
+      font-size: 1.25rem;
+      color: var(--color-text-light);
+      text-decoration: line-through;
+      margin-right: var(--space-xs);
+    }
+
+    .cta-price-current {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-sm) var(--space-lg);
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      margin-bottom: var(--space-md);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: #234a1f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(45, 90, 39, 0.3);
+    }
+
+    .cta-guarantees {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .cta-guarantee {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    .cta-guarantee-icon {
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      .cta-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .cta-title {
+        font-size: 2rem;
+      }
+
+      .cta-price-current {
+        font-size: 2rem;
+      }
+
+      .cta-guarantees {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+    }
+  </style>
+
+  <div class="cta-container">
+    <span class="cta-badge">{{ section.settings.badge_text | default: 'Limited Time Offer' }}</span>
+    <h2 class="cta-title">{{ section.settings.title | default: 'Ready to Transform Your Skin?' }}</h2>
+    <p class="cta-description">
+      {{ section.settings.description | default: "Join thousands of happy customers and experience the GlowGenie difference. Your journey to radiant, healthy skin starts today." }}
+    </p>
+
+    {% assign product = all_products[section.settings.product] %}
+
+    <div class="cta-price">
+      {% if product != blank %}
+        {% if product.compare_at_price > product.price %}
+          <span class="cta-price-original">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+        <span class="cta-price-current">{{ product.price | money }}</span>
+      {% else %}
+        <span class="cta-price-original">{{ section.settings.original_price | default: '$79.99' }}</span>
+        <span class="cta-price-current">{{ section.settings.current_price | default: '$49.99' }}</span>
+      {% endif %}
+    </div>
+
+    {% if product != blank %}
+      <form method="post" action="{{ routes.cart_add_url }}">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="cta-button">
+          {{ section.settings.button_text | default: 'Shop Now - Save 37%' }}
+        </button>
+      </form>
+    {% else %}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="cta-button">
+        {{ section.settings.button_text | default: 'Shop Now - Save 37%' }}
+      </a>
+    {% endif %}
+
+    <div class="cta-guarantees">
+      {% for block in section.blocks %}
+        {% if block.type == 'guarantee' %}
+          <div class="cta-guarantee">
+            <span class="cta-guarantee-icon">{{ block.settings.icon | default: '✓' }}</span>
+            {{ block.settings.text }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Ready to Transform Your Skin?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Join thousands of happy customers and experience the GlowGenie difference. Your journey to radiant, healthy skin starts today."
+    },
+    {
+      "type": "header",
+      "content": "Product Integration"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Select a product to display dynamic pricing and enable add to cart"
+    },
+    {
+      "type": "header",
+      "content": "Fallback Pricing (if no product selected)"
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "$79.99"
+    },
+    {
+      "type": "text",
+      "id": "current_price",
+      "label": "Current Price",
+      "default": "$49.99"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now - Save 37%"
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button Link (if no product)",
+      "default": "#",
+      "info": "Use # for anchor links or full URLs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "guarantee",
+      "name": "Guarantee",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+          "default": "✓"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free Shipping"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA",
+      "blocks": [
+        {
+          "type": "guarantee",
+          "settings": {
+            "icon": "✓",
+            "text": "Free Shipping"
+          }
+        },
+        {
+          "type": "guarantee",
+          "settings": {
+            "icon": "✓",
+            "text": "30-Day Money Back"
+          }
+        },
+        {
+          "type": "guarantee",
+          "settings": {
+            "icon": "✓",
+            "text": "Secure Checkout"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

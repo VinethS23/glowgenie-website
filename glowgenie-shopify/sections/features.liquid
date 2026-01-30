@@ -1,0 +1,147 @@
+<section id="features" class="features-section">
+  <style>
+    .features-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-white);
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .features-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .features-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    @media (max-width: 768px) {
+      .features-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .features-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
+  <div class="features-container">
+    <div class="features-header">
+      <p class="features-subtitle">{{ section.settings.subtitle | default: 'Product Features' }}</p>
+      <h2 class="features-title">{{ section.settings.title | default: 'What Makes Us Special' }}</h2>
+    </div>
+
+    <div class="features-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'feature' %}
+          {% assign feature_index = forloop.index | prepend: '0' | slice: -2, 2 %}
+          {% render 'feature-item', block: block, index: feature_index, is_even: forloop.index | modulo: 2 | equals: 0 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Product Features"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What Makes Us Special"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description goes here."
+        },
+        {
+          "type": "text",
+          "id": "highlight",
+          "label": "Highlight Text",
+          "default": "✓ Key Benefit",
+          "info": "Short highlight shown below description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Advanced Botanical Extracts",
+            "description": "Our proprietary blend combines rare botanical extracts from around the world. Each ingredient is carefully selected for its proven skincare benefits and sourced from sustainable farms.",
+            "highlight": "✓ 15+ Active Botanicals"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Time-Release Technology",
+            "description": "Our innovative delivery system ensures active ingredients are released gradually throughout the day, providing continuous nourishment and protection for your skin.",
+            "highlight": "✓ 24-Hour Protection"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "pH-Balanced Formula",
+            "description": "Perfectly balanced to match your skin's natural pH level, our formula works in harmony with your skin barrier, maximizing absorption and minimizing irritation.",
+            "highlight": "✓ Dermatologist Tested"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

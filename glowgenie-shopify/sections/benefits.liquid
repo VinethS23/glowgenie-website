@@ -1,0 +1,175 @@
+<section id="benefits" class="benefits-section">
+  <style>
+    .benefits-section {
+      padding: var(--space-xl) var(--space-sm);
+      background: var(--color-white);
+    }
+
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefits-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .benefits-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .benefits-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-text);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .benefits-section {
+        padding: var(--space-lg) var(--space-sm);
+      }
+
+      .benefits-title {
+        font-size: 2rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="benefits-container">
+    <div class="benefits-header">
+      <p class="benefits-subtitle">{{ section.settings.subtitle | default: 'Why Choose Us' }}</p>
+      <h2 class="benefits-title">{{ section.settings.title | default: 'The GlowGenie Difference' }}</h2>
+    </div>
+
+    <div class="benefits-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+          {% render 'benefit-card', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The GlowGenie Difference"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "default": "🌿",
+          "info": "Enter an emoji to use as the icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "100% Natural"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Pure, organic ingredients sourced from nature. No harsh chemicals, parabens, or synthetic fragrances."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🌿",
+            "title": "100% Natural",
+            "description": "Pure, organic ingredients sourced from nature. No harsh chemicals, parabens, or synthetic fragrances."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "✨",
+            "title": "Visible Results",
+            "description": "See noticeable improvements in your skin's texture, tone, and radiance within just 2 weeks."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🐰",
+            "title": "Cruelty-Free",
+            "description": "Never tested on animals. Our products are ethically made with love and compassion."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🌍",
+            "title": "Eco-Friendly",
+            "description": "Sustainable packaging and environmentally responsible practices from production to delivery."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "💧",
+            "title": "Deep Hydration",
+            "description": "Advanced formulas that penetrate deep to provide lasting moisture and nourishment."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🔬",
+            "title": "Science-Backed",
+            "description": "Formulated by dermatologists using proven ingredients and cutting-edge skincare research."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

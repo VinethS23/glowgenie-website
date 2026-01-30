@@ -1,0 +1,120 @@
+{% comment %}
+  Feature Item Snippet
+
+  Required variables:
+  - block: The block object containing settings for title, description, highlight, and image
+  - index: The feature number (e.g., "01", "02", "03")
+  - is_even: Boolean indicating if this is an even-indexed item (for alternating layout)
+{% endcomment %}
+
+<style>
+  .features-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .features-item--reversed {
+    direction: rtl;
+  }
+
+  .features-item--reversed > * {
+    direction: ltr;
+  }
+
+  .features-item-content {
+    padding: var(--space-md);
+  }
+
+  .features-item-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--color-secondary);
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+  }
+
+  .features-item-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+  }
+
+  .features-item-description {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: var(--space-sm);
+  }
+
+  .features-item-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .features-item-image {
+    background: var(--color-secondary);
+    border-radius: 15px;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    overflow: hidden;
+  }
+
+  .features-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .features-item,
+    .features-item--reversed {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .features-item-content {
+      padding: var(--space-sm) 0;
+      order: 2;
+    }
+
+    .features-item-image {
+      order: 1;
+    }
+
+    .features-item-number {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<div class="features-item {% if is_even %}features-item--reversed{% endif %}" {{ block.shopify_attributes }}>
+  <div class="features-item-content">
+    <div class="features-item-number">{{ index | default: '01' }}</div>
+    <h3 class="features-item-title">{{ block.settings.title | default: 'Feature Title' }}</h3>
+    <p class="features-item-description">
+      {{ block.settings.description | default: 'Feature description goes here.' }}
+    </p>
+    {% if block.settings.highlight != blank %}
+      <span class="features-item-highlight">
+        {{ block.settings.highlight }}
+      </span>
+    {% endif %}
+  </div>
+  <div class="features-item-image">
+    {% if block.settings.image %}
+      <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+    {% else %}
+      [Feature Image Placeholder]
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+{% comment %}
+  Benefit Card Snippet
+
+  Required variables:
+  - block: The block object containing settings for icon, title, and description
+{% endcomment %}
+
+<style>
+  .benefits-card {
+    background: var(--color-secondary);
+    padding: var(--space-md);
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .benefits-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefits-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-sm);
+    font-size: 2rem;
+  }
+
+  .benefits-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .benefits-card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+</style>
+
+<div class="benefits-card" {{ block.shopify_attributes }}>
+  <div class="benefits-icon">{{ block.settings.icon | default: '🌿' }}</div>
+  <h3 class="benefits-card-title">{{ block.settings.title | default: 'Benefit Title' }}</h3>
+  <p class="benefits-card-description">
+    {{ block.settings.description | default: 'Benefit description goes here.' }}
+  </p>
+</div>
